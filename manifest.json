@@ -4,7 +4,13 @@
   "version": "1.0.0",
   "description": "Click-to-select DOM-to-JSON extractor with clean exports.",
   "action": {
-    "default_title": "Toggle Extractor"
+    "default_title": "Toggle Extractor",
+    "default_icon": "icon128.png"
+  },
+  "icons": {
+    "16": "icon128.png",
+    "48": "icon128.png",
+    "128": "icon128.png"
   },
   "permissions": [
     "activeTab",
