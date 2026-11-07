@@ -13,19 +13,12 @@
   width: 320px;
   background-color: #1e1e1e;
   color: #f1f1f1;
-  z-index: 2147483647; /* Max z-index to sit on top of everything */
+  z-index: 2147483647;
   border-radius: 6px;
   padding: 16px;
   font-family: monospace;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   border: 1px solid #333;
-}
-
-#dom-extractor-panel h3 { 
-  margin: 0 0 12px 0; 
-  font-size: 14px; 
-  border-bottom: 1px solid #444; 
-  padding-bottom: 8px; 
 }
 
 #dom-extractor-panel ul { 
