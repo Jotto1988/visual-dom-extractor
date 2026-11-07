@@ -1,16 +1,26 @@
-// Prevent multiple injections if the icon is clicked repeatedly
 if (!window.domExtractorInitialized) {
     window.domExtractorInitialized = true;
     let isActive = false;
     let extractedData = [];
     let currentTarget = null;
 
-    // 1. Build and Inject the UI Panel
+    // 1. Build and Inject the UI Panel with SVG Header
     const panel = document.createElement('div');
     panel.id = 'dom-extractor-panel';
     panel.style.display = 'none';
     panel.innerHTML = `
-        <h3>DOM Extractor (Active)</h3>
+        <div style="display: flex; align-items: center; border-bottom: 1px solid #444; padding-bottom: 12px; margin-bottom: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="24" height="24" style="margin-right: 10px;">
+              <rect width="128" height="128" rx="24" fill="#111"/>
+              <path d="M32 32h64v64H32z" stroke="#ff9900" stroke-width="6" fill="none" stroke-dasharray="12 8"/>
+              <circle cx="32" cy="32" r="6" fill="#ff9900"/>
+              <circle cx="96" cy="32" r="6" fill="#ff9900"/>
+              <circle cx="32" cy="96" r="6" fill="#ff9900"/>
+              <circle cx="96" cy="96" r="6" fill="#ff9900"/>
+              <path d="M64 44v40M44 64h40" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <h3 style="margin: 0; border: none; padding: 0;">DOM Extractor</h3>
+        </div>
         <ul id="extractor-data-list"></ul>
         <button id="extractor-export-btn" class="extractor-btn">Export JSON</button>
         <button id="extractor-webhook-btn" class="extractor-btn">Send to Webhook</button>
@@ -47,7 +57,6 @@ if (!window.domExtractorInitialized) {
     function handleClick(e) {
         if (!isActive || panel.contains(e.target)) return;
         
-        // Prevent default actions (like following links or submitting forms)
         e.preventDefault();
         e.stopPropagation();
         
@@ -66,7 +75,6 @@ if (!window.domExtractorInitialized) {
         listEl.appendChild(li);
     }
 
-    // Attach listeners in the capture phase to guarantee interception
     document.addEventListener('mouseover', handleMouseOver, true);
     document.addEventListener('click', handleClick, true);
 
@@ -115,5 +123,4 @@ if (!window.domExtractorInitialized) {
     });
 }
 
-// Toggle on each click of the extension icon
 window.toggleExtractor();
